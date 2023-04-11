@@ -40,4 +40,7 @@
     @endforeach
   </tbody>
 </table>
+
 @endsection
+@extends('nav')
+@section('content')
