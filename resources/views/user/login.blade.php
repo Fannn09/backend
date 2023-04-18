@@ -166,11 +166,15 @@
                     margin-left: 0;
                     background: #4267B2;
                     border: 1px solid #3e61a8;
+                    margin: 20px 0;
+                    font-family: 'Poppins', sans-serif;
                 }
 
                 .instagram {
                     background: #E1306C;
                     border: 1px solid #df2060;
+                    margin: 20px 0;
+                    font-family: 'Poppins', sans-serif;
                 }
 
                 .facebook:hover {
@@ -189,8 +193,12 @@
                     margin-left: 8px;
                     font-weight: 500;
                     letter-spacing: 1px;
+                    padding-top: 10px;
+                    padding-bottom: 10px;
+                    padding-right: 10px;
                     font-size: 16px;
                     font-family: 'Poppins', sans-serif;
+                    margin: 20px 0;
                 }
 
                 .signup {
@@ -245,7 +253,7 @@
                     </div>
                     <div class="signup">
                         Don't have account?
-                        <a href="#">Signup Now</a>
+                        <a href="register">Register</a>
                     </div>
                 </div>
             </div>
