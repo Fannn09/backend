@@ -1,38 +1,64 @@
 @extends('app')
 @section('content')
-<form action="{{ route('departements.update',$departement->id) }}" method="POST" enctype="multipart/form-data">
-    @csrf
-    @method('PUT')
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>departements:</strong>
-                <input type="text" name="name" value="{{ $departement->name }}" class="form-control" placeholder="departement name">
-                @error('name')
-                <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-                @enderror
+@method('PUT')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Create Department</div>
+                <div class="card-body">
+                    @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
+                    <form action="{{ route('departements.store') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <div class="card-body">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <div class="form-group">
+                                        <strong>departements:</strong>
+                                        <input type="text" name="name" value="{{ $departement->name }}" class="form-control" placeholder="departement name">
+                                        @error('name')
+                                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <strong>location:</strong>
+                                    <input type="location" name="location" class="form-control" placeholder="location" value="{{ $departement->location }}">
+                                    @error('location')
+                                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <label for="manager_id">Manager</label>
+                                        <select name="manager_id" class="form-control">
+                                            @foreach ($managers as $manager)
+                                            <option value="{{ $manager->id }}">{{ $manager->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary ml-3">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>location:</strong>
-                <input type="location" name="location" class="form-control" placeholder="location" value="{{ $departement->location }}">
-                @error('location')
-                <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-                @enderror
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <label for="manager_id">Manager</label>
-                <select name="manager_id" class="form-control">
-                    @foreach ($managers as $manager)
-                    <option value="{{ $manager->id }}">{{ $manager->name }}</option>
-                    @endforeach
-                </select>
-            </div>
-        </div>
-        <button type="submit" class="btn btn-primary mt-3 ml-3">Submit</button>
     </div>
-</form>
+</div>
 @endsection
