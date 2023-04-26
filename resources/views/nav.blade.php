@@ -45,12 +45,14 @@
                                                         Link
                                                     </a>
                                                     <ul class="dropdown-menu">
-                                                        <li><a class="dropdown-item" href="#">Action</a></li>
-                                                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                                                        <li>
-                                                            <hr class="dropdown-divider">
-                                                        </li>
-                                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                                        <nav id="menu_vertikal">
+                                                            <ul>
+                                                                <!-- <li><a href="#home">Home</a></li>
+                                                                <li><a href="#portfolia">Portfolio</a></li>
+                                                                <li><a href="#contact">Contact</a></li> -->
+                                                                <a class="btn btn-danger" href="{{ route('login') }}">Logout</a>
+                                                            </ul>
+                                                        </nav>
                                                     </ul>
                                                 </li>
                                                 @endif
