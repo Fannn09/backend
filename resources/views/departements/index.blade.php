@@ -27,7 +27,10 @@
       <!-- <td>{{ $data->id }}</td> -->
       <td>{{ $data->name }}</td>
       <td>{{ $data->location }}</td>
-      <td>{{ $data->manager_id }}</td>
+      <td>{{
+        (isset($data->manager->name))?
+      $data->manager->name : 
+    'Tidak Ada'}}</td>
       <td>
         <form action="{{ route('departements.destroy',$data->id) }}" method="Post">
           <a class="btn btn-primary" href="{{ route('departements.edit',$data->id) }}">Edit</a>

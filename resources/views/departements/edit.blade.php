@@ -1,5 +1,6 @@
 @extends('app')
 @section('content')
+
 @method('PUT')
 <div class="container">
     <div class="row justify-content-center">
@@ -16,8 +17,9 @@
                         </ul>
                     </div>
                     @endif
-                    <form action="{{ route('departements.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('departements.update',$departement->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
+                        @method('PUT')
                         <div class="card-body">
                             <div class="col-md-8">
                                 <div class="form-group">
@@ -42,9 +44,10 @@
                                 <div class="col-md-8">
                                     <div class="form-group">
                                         <label for="manager_id">Manager</label>
-                                        <select name="manager_id" class="form-control">
+                                        <select name="manager_id" id="manager_id" class="form-control">
+                                            <option value="">Pilih</option>
                                             @foreach ($managers as $manager)
-                                            <option value="{{ $manager->id }}">{{ $manager->name }}</option>
+                                            <option value="{{ $manager->id }}"{{($manager->id == $departement->manager_id)?'selected': ''}}>{{ $manager->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>

@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Departements;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -46,7 +45,7 @@ class DepartementController extends Controller
     public function edit(Departements $departement)
     {
         $title = "Edit Data departement";
-        $managers = User::where('position', 'manager')->get();
+        $managers = User::where('position','1')->get();
         return view('departements.edit', compact('departement', 'managers', 'title'));
     }
 
