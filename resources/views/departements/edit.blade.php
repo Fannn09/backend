@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Create Department</div>
+                <div class="card-header">Edit Department</div>
                 <div class="card-body">
                     @if ($errors->any())
                     <div class="alert alert-danger">
@@ -47,7 +47,7 @@
                                         <select name="manager_id" id="manager_id" class="form-control">
                                             <option value="">Pilih</option>
                                             @foreach ($managers as $manager)
-                                            <option value="{{ $manager->id }}"{{($manager->id == $departement->manager_id)?'selected': ''}}>{{ $manager->name }}</option>
+                                            <option value="{{ $manager->id }}" {{($manager->id == $departement->manager_id)?'selected': ''}}>{{ $manager->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
