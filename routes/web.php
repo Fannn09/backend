@@ -43,5 +43,11 @@ Route::middleware('auth')->group(
         Route::resource('positions', PositionController::class);
 
         Route::resource('departements', DepartementController::class);
+        Route::resource('users', UserController::class);
+
+        // route user
+        Route::get('/users', [UserController::class, 'index'])->name('users.index');
+        Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
+        Route::post('/users', [UserController::class, 'store'])->name('users.store');
         
     });

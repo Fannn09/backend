@@ -104,6 +104,9 @@
                           <li class="nav-item">
                             <a class="nav-link" href="{{route('departements.index')}}">Departements</a>
                           </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="{{route('users.index')}}">User</a>
+                          </li>
                           @if(Auth()->user()->position =="0")
                           <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
