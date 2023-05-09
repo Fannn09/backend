@@ -42,6 +42,8 @@ Route::middleware('auth')->group(
 // route position
         Route::resource('positions', PositionController::class);
 
+        Route::get('departements/export-pdf', [DepartementController::class, 'exportpdf'])->name('exportpdf');
+
         Route::resource('departements', DepartementController::class);
         Route::resource('users', UserController::class);
 
@@ -49,5 +51,7 @@ Route::middleware('auth')->group(
         Route::get('/users', [UserController::class, 'index'])->name('users.index');
         Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
         Route::post('/users', [UserController::class, 'store'])->name('users.store');
+
+       
         
     });

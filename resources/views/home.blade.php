@@ -105,6 +105,9 @@
                             <a class="nav-link" href="{{route('departements.index')}}">Departements</a>
                           </li>
                           <li class="nav-item">
+                            <a class="nav-link" href="login">Link</a>
+                          </li>
+                          <li class="nav-item">
                             <a class="nav-link" href="{{route('users.index')}}">User</a>
                           </li>
                           @if(Auth()->user()->position =="0")

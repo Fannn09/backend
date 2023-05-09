@@ -4,20 +4,21 @@ namespace App\Http\Controllers;
 use App\Models\Departements;
 use Illuminate\Http\Request;
 use App\Models\User;
+use PDF;
 
 class DepartementController extends Controller
 {
     public function index()
     {
         $title = "Data Departements";
-        $departements = Departements::orderBy('id', 'asc')->paginate(5);
+        $departements = Departements::orderBy('id', 'asc')->get();
         return view('departements.index', compact(['departements', 'title']));
     }
 
     public function create()
     {
         $title = "Tambah data";
-        $managers = User::where('position', 'manager')->get();
+        $managers = User::where('positions', 'manager')->get();
         return view('departements.create', compact('managers', 'title'));
     }
 
@@ -73,5 +74,13 @@ class DepartementController extends Controller
     {
         $departement->delete();
         return redirect()->route('departements.index')->with('success', 'departements has been deleted successfully');
+    }
+    public function exportPDF()
+    {
+        $title = "Laporan Data Departements";
+        $departements = Departements::orderBy('id', 'asc')->get();
+        // return view('departements.pdf', compact(['departements', 'title']));
+        $pdf = PDF::loadview('departements.pdf', compact(['departements', 'title']));
+        return $pdf->stream('laporan-department-pdf');
     }
 }

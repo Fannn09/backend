@@ -19,13 +19,13 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->integer('position')->default(0);
-            $table->integer('departement')->default(0);
+            $table->integer('positions')->default(0);
+            $table->integer('departements')->default(0);
+            // $table->integer('position')->default(0);
+            // $table->integer('departement')->default(0);
             $table->rememberToken();
             $table->timestamps();
 
-            $table->foreign('manager_id')->references('id')->on('departments')->onDelete('set null');
-            $table->foreign('position_id')->references('id')->on('positions')->onDelete('set null');
         });
 
 
