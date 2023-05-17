@@ -5,6 +5,9 @@
 </div>
 @endif
 <div class="text-end mb-2">
+  <a class="btn btn-success" href="{{ route('positions.create') }}"> Add Positions</a>
+</div>
+<div class="text-end mb-2">
   <a class="btn btn-success" href="{{ route('users.create') }}"> Add Positions</a>
 </div>
 <table class="table">
@@ -12,9 +15,10 @@
     <tr style="background-color: #0000FF;">
       <th scope="col" style="color: #FFFFFF;">No</th>
       <th scope="col" style="color: #FFFFFF;">Nama</th>
-      <th scope="col" style="color: #FFFFFF;">Keterangan</th>
-      <th scope="col" style="color: #FFFFFF;">Singkatan</th>
-      <th scope="col" style="color: #FFFFFF;">Actions</th>
+      <th scope="col" style="color: #FFFFFF;">Email</th>
+      <th scope="col" style="color: #FFFFFF;">Departement</th>
+      <th scope="col" style="color: #FFFFFF;">Position</th>
+      <th scope="col" style="color: #FFFFFF;">Action</th>
     </tr>
   </thead>
   <tbody style="background-color: #D4EFDF;">

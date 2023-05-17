@@ -1,6 +1,5 @@
 @extends('layout')
 @section('content')
-
 <table class="table mt-5">
   <thead>
     <tr style="background-color: #0000FF;">
