@@ -50,9 +50,10 @@
                                         @enderror
                                     </div>
                                 </div>
-
+                                <br>
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-primary ml-3">Submit</button>
+                                    <a class="btn btn-danger" href="{{ route('departements.index') }}">Back</a>
                                 </div>
                             </div>
                         </div>

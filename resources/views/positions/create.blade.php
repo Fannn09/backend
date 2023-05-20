@@ -31,6 +31,7 @@
             </div>
         </div>
         <button type="submit" class="btn btn-primary ml-3">Submit</button>
+        <a class="btn btn-danger" href="{{ route('positions.index') }}">Back</a>
     </div>
 </form>
 @endsection

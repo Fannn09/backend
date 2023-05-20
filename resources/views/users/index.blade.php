@@ -31,8 +31,8 @@
       <td>{{ $data->name }}</td>
       <td>{{ $data->email }}</td>
       <td>{{ $data->password }}</td>
-      <td>{{ $data->position }}</td>
-      <td>{{ $data->departement }}</td>
+      <td>{{ $data->positions }}</td>
+      <td>{{ $data->departements }}</td>
       <!-- <td>{{
         (isset($data->manager->name))?
       $data->manager->name : 
