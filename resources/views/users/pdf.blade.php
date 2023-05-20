@@ -9,7 +9,7 @@
       <th scope="col" style="color: #FFFFFF;">Password</th>
       <th scope="col" style="color: #FFFFFF;">Positions</th>
       <th scope="col" style="color: #FFFFFF;">Departements</th>
-      <th scope="col" style="color: #FFFFFF;">Actions</th>
+      <!-- <th scope="col" style="color: #FFFFFF;">Actions</th> -->
     </tr>
   </thead>
   <tbody style="background-color: #D4EFDF;">
@@ -21,8 +21,8 @@
       <td>{{ $data->name }}</td>
       <td>{{ $data->email }}</td>
       <td>{{ $data->password }}</td>
-      <td>{{ $data->position }}</td>
-      <td>{{ $data->departement }}</td>
+      <td>{{ $data->positions }}</td>
+      <td>{{ $data->departements }}</td>
       <!-- <td>{{
         (isset($data->manager->name))?
       $data->manager->name : 

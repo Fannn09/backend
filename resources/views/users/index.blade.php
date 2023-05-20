@@ -7,7 +7,7 @@
 </div>
 @endif
 <div class="text-end mb-2">
-  <a class="btn btn-light" href="{{ route('exportpdf') }}">Cetak</a>
+  <a class="btn btn-light" href="{{ route('users.exportpdf') }}"> Cetak</a>
   <a class="btn btn-success" href="{{ route('users.create') }}"> Add User</a>
 </div>
 <table id="example" class="table table-striped" style="width:100%">

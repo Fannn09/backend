@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\Departements;
 use App\Models\Positions;
 use Illuminate\Validation\Rule;
+use PDF;
 
 
 class UserController extends Controller
