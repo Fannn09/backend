@@ -1,16 +1,6 @@
-@extends('app')
+@extends('layout')
 @section('content')
-@if(session('success'))
-<div class="alert alert-success alert-dismissible fade show" role="alert">
-  {{session('success')}}
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
-</div>
-@endif
-<div class="text-end mb-2">
-  <a class="btn btn-light" href="{{ route('exportpdf') }}">Cetak</a>
-  <a class="btn btn-success" href="{{ route('users.create') }}"> Add User</a>
-</div>
-<table id="example" class="table table-striped" style="width:100%">
+<table class="table mt-5">
   <thead>
     <tr style="background-color: #0000FF;">
       <th scope="col" style="color: #FFFFFF;">No</th>
@@ -38,22 +28,16 @@
       $data->manager->name : 
     'Tidak Ada'}}</td> -->
       <td>
-        <form action="{{ route('users.destroy',$data->id) }}" method="Post">
-          <a class="btn btn-primary" href="{{ route('users.edit',$data->id) }}">Edit</a>
+        <!-- <td>
+        <form action="{{ route('departements.destroy',$data->id) }}" method="Post">
+          <a class="btn btn-primary" href="{{ route('departements.edit',$data->id) }}">Edit</a>
           @csrf
           @method('DELETE')
           <button type="submit" class="btn btn-danger">Delete</button>
         </form>
-      </td>
+      </td> -->
     </tr>
     @endforeach
   </tbody>
 </table>
-@endsection
-@section('js')
-<script>
-  $(document).ready(function() {
-    $('#example').DataTable();
-  });
-</script>
 @endsection

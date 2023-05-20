@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PositionController;
 use App\Http\Controllers\DepartementController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -42,15 +43,15 @@ Route::middleware('auth')->group(
 // route position
         Route::resource('positions', PositionController::class);
 
-        Route::get('departements/export-pdf', [DepartementController::class, 'exportpdf'])->name('exportpdf');
+        Route::get('departements/exportpdf', [DepartementController::class, 'exportpdf'])->name('exportpdf');
 
         Route::resource('departements', DepartementController::class);
         Route::resource('users', UserController::class);
 
         // route user
-        Route::get('/users', [UserController::class, 'index'])->name('users.index');
-        Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
-        Route::post('/users', [UserController::class, 'store'])->name('users.store');
+        // Route::get('/users/exportpdf', [UserController::class, 'exportPDF'])->name('exportpdf');
+
+        // Route::get('/users/exportpdf', [UserController::class, 'exportPDF'])->name('exportpdf');
 
        
         

@@ -7,7 +7,7 @@
 </div>
 @endif
 <div class="text-end mb-2">
-<a class="btn btn-light" href="{{ route('exportpdf') }}"> Cetak</a>
+  <a class="btn btn-light" href="{{ route('exportpdf') }}"> Cetak</a>
   <a class="btn btn-success" href="{{ route('departements.create') }}"> Add Pasien</a>
 </div>
 <table id="example" class="table table-striped" style="width:100%">
@@ -47,10 +47,8 @@
 @endsection
 @section('js')
 <script>
-  $(document).ready(function () {
+  $(document).ready(function() {
     $('#example').DataTable();
-});
+  });
 </script>
 @endsection
-@extends('nav')
-@section('content')

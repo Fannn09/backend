@@ -90,89 +90,92 @@ class UserController extends Controller
     // latihan tugas
     public function index()
     {
-        $users = User::with(['departements', 'positions'])->get();
-
-        return view('users.index', compact('users'));
+        $title = "Data User";
+        $users = User::all();
+        return view('users.index', compact('users', 'title'));
     }
+
     public function create()
     {
-        $departements = Departements::all();
-        $positions = Positions::all();
-        $title = "Tambah Data Position";
-
-        return view('users.create', compact('departements', 'positions'));
+        $title = "Tambah Data";
+        $users = User::all();
+        return view('users.create', compact('users', 'title'));
+       
     }
-
 
     public function store(Request $request)
     {
+        // Validasi input dari formulir tambah pengguna
+        $validatedData = $request->validate(['name' => 'required',
+            'email' => 'required|email',
+            'password' => 'required',
+            'position' => 'required',
+            'department' => 'required',
+        ]);
+
+        // Simpan data pengguna ke dalam database
+        User::create($validatedData);
+
+        return redirect()->route('users.index')->with(
+            'success',
+            'User added successfully'
+        );
+    }
+
+    public function edit($id)
+    {
+        $title = "Edit User";
+        $user = User::findOrFail($id);
+        return view('users.edit', compact('user', 'title'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        // Validasi input dari formulir edit pengguna
         $validatedData = $request->validate([
-            'name' => 'required|max:255',
-            'email' => 'required|email|unique:users|max:255',
-            'password' => 'required|min:6|max:255',
-            'department_id' => 'required|exists:departements,id',
-            'position_id' => 'required|exists:positions,id',
-        ]);
-        $user = User::create([
-            'name' => $validatedData['name'],
-            'email' => $validatedData['email'],
-            'password' => bcrypt($validatedData['password']),
-            'department_id' => $validatedData['department_id'],
-            'position_id' => $validatedData['position_id'],
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'required',
+            'position' => 'required',
+            'department' => 'required',
         ]);
 
-        return redirect()->route('users.index')->with('success', 'User created successfully.');
+        // Update data pengguna dalam database
+        $user = User::findOrFail($id);
+        $user->update($validatedData);
+
+        return redirect()->route('users.index')->with(
+            'success',
+            'User updated successfully'
+        );
     }
 
-    public function show(User $user)
+    public function destroy($id)
     {
-        return view('users.show', compact('user'));
-    }
-
-    public function edit(User $user)
-    {
-        $departements = Departements::all();
-        $positions = Positions::all();
-
-        $title = "edit Data Position";
-
-        return view('users.edit', compact('departements', 'positions'));
-    }
-
-    public function update(Request $request, User $user)
-    {
-        $validatedData = $request->validate([
-            'name' => 'required|max:255',
-            'email' => [
-                'required',
-                'email',
-                'max:255',
-                Rule::unique('users')->ignore($user->id),
-            ],
-            'password' => 'nullable|min:6|max:255',
-            'department_id' => 'required|exists:departements,id',
-            'position_id' => 'required|exists:positions,id',
-        ]);
-        $data = [
-            'name' => $validatedData['name'],
-            'email' => $validatedData['email'],
-            'department_id' => $validatedData['department_id'],
-            'position_id' => $validatedData['position_id'],
-        ];
-
-        if (!empty($validatedData['password'])) {
-            $data['password'] = bcrypt($validatedData['password']);
-        }
-
-        $user->update($data);
-
-        return redirect()->route('users.index')->with('success', 'User updated successfully.');
-    }
-
-    public function destroy(User $user)
-    {
+        // Hapus data pengguna dari database
+        $user = User::findOrFail($id);
         $user->delete();
-        return redirect()->route('users.index')->with('success', 'User deleted successfully.');
+
+        return redirect()->route('users.index')->with('success', 'User deleted successfully');
     }
-    
+
+    public function show($id)
+    {
+        $title = "Laporan User";
+        $user = User::findOrFail($id);
+        return view('users.show', compact('user', 'title'));
+    }
+
+    public function exportPDF()
+    {
+        // $users = User::all();
+        // $pdf = PDF::loadView('users.pdf', compact('users'));
+
+        // return $pdf->download('users.pdf');
+
+        $title = "Laporan Data User";
+        $users = User::orderBy('id', 'asc')->get();
+        $pdf = PDF::loadview('users.pdf', compact(['users', 'title']));
+        return $pdf->stream('laporan-user-pdf');
+    }
 }
